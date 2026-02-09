@@ -88,7 +88,7 @@ export function AdminSidebar() {
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           {navItems.map((item) => {
             const Icon = item.icon
-            const showBadge = item.showPendingBadge && pendingClinicsCount && pendingClinicsCount > 0
+            const showBadge = item.showPendingBadge && (pendingClinicsCount ?? 0) > 0
             return (
               <Link
                 key={item.name}
