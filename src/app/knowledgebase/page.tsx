@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { usePublicArticles, usePublicKbCategories } from '@/hooks/useKnowledgebase'
 import { ArticleCard } from '@/components/knowledgebase/ArticleCard'
@@ -9,7 +9,7 @@ import { KbSearch } from '@/components/knowledgebase/KbSearch'
 import { BookOpen, FileText, HelpCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 
-export default function KnowledgebasePage() {
+function KnowledgebaseContent() {
   const searchParams = useSearchParams()
   const categoryFilter = searchParams.get('category') || undefined
 
@@ -120,5 +120,19 @@ export default function KnowledgebasePage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function KnowledgebasePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center py-24">
+          <Loader2 className="w-8 h-8 animate-spin text-turbo-blue" />
+        </div>
+      }
+    >
+      <KnowledgebaseContent />
+    </Suspense>
   )
 }
