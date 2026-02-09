@@ -193,7 +193,7 @@ export function LocationsManager({ locations, onChange }: LocationsManagerProps)
     onChange(updatedLocations)
   }
 
-  const updateLocation = (index: number, field: keyof LocationInput, value: any) => {
+  const updateLocation = (index: number, field: string, value: any) => {
     const updatedLocations = [...locations]
     updatedLocations[index] = {
       ...updatedLocations[index],
@@ -410,7 +410,7 @@ export function LocationsManager({ locations, onChange }: LocationsManagerProps)
                 <Input
                   label="Zip/Postal Code"
                   placeholder="12345"
-                  value={'postal_code' in selectedLocation ? selectedLocation.postal_code || '' : ''}
+                  value={'postal_code' in selectedLocation ? (selectedLocation as any).postal_code || '' : ''}
                   onChange={(e) => updateLocation(selectedIndex, 'postal_code', e.target.value)}
                 />
                 <Input

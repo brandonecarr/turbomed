@@ -157,11 +157,11 @@ export async function PUT(
     const existingLocationIds = new Set((existingLocations || []).map((l: { id: string }) => l.id))
     const newLocationIds = new Set(validated.locations.filter((l) => l.id).map((l) => l.id))
 
-    console.log('Existing location IDs:', [...existingLocationIds])
-    console.log('New location IDs from form:', [...newLocationIds])
+    console.log('Existing location IDs:', Array.from(existingLocationIds))
+    console.log('New location IDs from form:', Array.from(newLocationIds))
 
     // Delete locations that are no longer in the list
-    const locationsToDelete = [...existingLocationIds].filter((locId) => !newLocationIds.has(locId))
+    const locationsToDelete = Array.from(existingLocationIds).filter((locId) => !newLocationIds.has(locId))
     if (locationsToDelete.length > 0) {
       await supabase
         .from('distributor_locations')

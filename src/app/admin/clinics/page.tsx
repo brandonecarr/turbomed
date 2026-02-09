@@ -63,7 +63,7 @@ export default function ClinicsPage() {
   const statusBadgeConfig = {
     pending: { variant: 'warning' as const, icon: Clock, label: 'Pending' },
     approved: { variant: 'success' as const, icon: CheckCircle, label: 'Approved' },
-    rejected: { variant: 'error' as const, icon: XCircle, label: 'Rejected' },
+    rejected: { variant: 'danger' as const, icon: XCircle, label: 'Rejected' },
   }
 
   const pendingCount = clinics?.filter((c) => c.status === 'pending').length || 0

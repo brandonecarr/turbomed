@@ -116,7 +116,7 @@ export async function PUT(
       const newIds = new Set(validated.locations.filter((l) => l.id).map((l) => l.id))
 
       // Delete locations that are no longer in the list
-      const toDelete = [...existingIds].filter((locId) => !newIds.has(locId))
+      const toDelete = Array.from(existingIds).filter((locId) => !newIds.has(locId))
       if (toDelete.length > 0) {
         await supabase
           .from('clinic_locations')

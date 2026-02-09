@@ -8,8 +8,10 @@ export type AuditAction =
   | 'unpublish'
   | 'import'
   | 'export'
+  | 'approve'
+  | 'reject'
 
-export type EntityType = 'distributor' | 'country' | 'admin_user' | 'kb_article' | 'kb_faq' | 'kb_category'
+export type EntityType = 'distributor' | 'country' | 'admin_user' | 'clinic' | 'kb_article' | 'kb_faq' | 'kb_category'
 
 export async function logAuditEvent(
   userId: string | null,

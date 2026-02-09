@@ -27,8 +27,8 @@ export function ClinicSignupForm({ onSuccess }: ClinicSignupFormProps) {
     control,
     formState: { errors, isSubmitting },
     watch,
-  } = useForm<ClinicSignupInput>({
-    resolver: zodResolver(clinicSignupSchema),
+  } = useForm({
+    resolver: zodResolver(clinicSignupSchema) as any,
     defaultValues: {
       name: '',
       email: '',
@@ -68,7 +68,7 @@ export function ClinicSignupForm({ onSuccess }: ClinicSignupFormProps) {
     }
 
     try {
-      await submitClinic.mutateAsync(data)
+      await submitClinic.mutateAsync(data as any)
       setIsSubmitted(true)
       onSuccess?.()
     } catch (error: any) {
